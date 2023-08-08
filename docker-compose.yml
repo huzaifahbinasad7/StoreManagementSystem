@@ -1,0 +1,18 @@
+version: '3.1'
+services:
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: zkhaliq
+      MYSQL_PASSWORD: zkhaliq
+      MYSQL_DATABASE: SMSDB
+    ports:
+      - "3310:3306"
+  adminer:
+    image: adminer
+    restart: always #it specifies that container will automatically restart if it goes down, not that it will be restarted with server
+    ports:
+      - "8090:8080"
